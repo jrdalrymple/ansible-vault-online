@@ -27,6 +27,9 @@ class Crypt(resource.Resource):
             request.setResponseCode(400)
             return json.dumps({"value": "bad input object"})
 
+	if body.get("vault_id"):
+		vault_id = body.get("vault_id")
+
         if body.get("password"):
             secret = VaultSecret(to_bytes(body["password"], "utf-8", errors='strict'))
 
